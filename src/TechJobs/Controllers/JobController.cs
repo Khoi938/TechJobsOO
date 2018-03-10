@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TechJobs.Data;
+using TechJobs.Models;
 using TechJobs.ViewModels;
 
 namespace TechJobs.Controllers
@@ -16,11 +17,13 @@ namespace TechJobs.Controllers
         }
 
         // The detail display for a given Job at URLs like /Job?id=17
+        // [HttpPost]
         public IActionResult Index(int id)
         {
             // TODO #1 - get the Job with the given ID and pass it into the view
-
-            return View();
+            Job entry = jobData.Find(id);
+            return View(entry);
+         
         }
 
         public IActionResult New()
