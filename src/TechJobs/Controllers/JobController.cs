@@ -22,7 +22,7 @@ namespace TechJobs.Controllers
         {
             // TODO #1 - get the Job with the given ID and pass it into the view
             Job entry = jobData.Find(id);
-            return View(entry);
+            return View("Views/Job/Index.cshtml",entry);
          
         }
 
