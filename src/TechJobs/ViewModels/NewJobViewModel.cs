@@ -10,24 +10,24 @@ namespace TechJobs.ViewModels
     {
         [Required]
         public string Name { get; set; }
-        public string Location { get; set; }
+        //public string Location { get; set; }
 
         [Required]
         [Display(Name = "Employer")]
-        public int EmployerID { get; set; }
+        public int EmployerID { get; set; } //change to string?
         [Required]
         [Display(Name = "Location")]
-        public string City { get; set; }
+        public int City { get; set; }
         [Required]
         [Display(Name = "Skill")]
-        public string Skill { get; set; }
+        public int Skill { get; set; }
         [Required]
         [Display(Name = "Position Type")]
-        public string Position { get; set; }
+        public int Position { get; set; }
 
         // TODO #3 - Included other fields needed to create a job,
         // with correct validation attributes and display names.
-
+        // THis is used to populate the list
         public List<SelectListItem> Employers { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> Locations { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> CoreCompetencies { get; set; } = new List<SelectListItem>();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using TechJobs.Data;
 using TechJobs.Models;
 using TechJobs.ViewModels;
@@ -35,6 +36,58 @@ namespace TechJobs.Controllers
         [HttpPost]
         public IActionResult New(NewJobViewModel newJobViewModel)
         {
+            
+            if (ModelState.IsValid)
+            {
+                Employer newEmp  = new Employer();
+                List<Employer> emp = jobData.Employers.ToList();
+                foreach (Employer x in emp)
+                {
+                    if (x.ID == newJobViewModel.EmployerID)
+                    {
+                        newEmp = x;
+                    }
+                }
+                CoreCompetency newCore = new CoreCompetency();
+                List<CoreCompetency> core = jobData.CoreCompetencies.ToList();
+                foreach (CoreCompetency x in core)
+                {
+                    if (x.ID == newJobViewModel.Skill)
+                    {
+                        newCore = x;
+                    }
+                }
+                Location newLoca = new Location();
+                List<Location> loca = jobData.Locations.ToList();
+                foreach (Location x in loca)
+                {
+                    if (x.ID == newJobViewModel.City)
+                    {
+                        newLoca = x;
+                    }
+                }
+                PositionType newPo = new PositionType();
+                List<PositionType> po = jobData.PositionTypes.ToList();
+                foreach (PositionType x in po)
+                {
+                    if (x.ID == newJobViewModel.Position)
+                    {
+                        newPo = x;
+                    }
+                }
+
+                Job newJob = new Job
+                {
+                    Name = newJobViewModel.Name,
+                    CoreCompetency = newCore,
+                    Employer = newEmp,
+                    Location = newLoca,
+                    PositionType = newPo,
+                };
+                jobData.Jobs.Add(newJob);
+                
+                return Redirect("/Job?Id="+newJob.ID);
+            }
             // TODO #6 - Validate the ViewModel and if valid, create a 
             // new Job and add it to the JobData data store. Then
             // redirect to the Job detail (Index) action/view for the new Job.

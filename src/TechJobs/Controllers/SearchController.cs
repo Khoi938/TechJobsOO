@@ -41,5 +41,9 @@ namespace TechJobs.Controllers
 
             return View("Index", jobsViewModel);
         }
+        public IActionResult ById()
+        {
+            return View();
+        }
     }
 }

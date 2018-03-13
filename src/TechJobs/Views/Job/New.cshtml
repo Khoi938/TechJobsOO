@@ -23,9 +23,6 @@
     <label asp-for="Position"></label>
     <select asp-for="Position" asp-items="Model.PositionTypes"></select>
     </div>
-    @{
-        // TODO #5 - Create <select> dropdowns for other job fields (outside of this @{ } block)
-    }
 
     <input type="submit" value="Add Job" />
 </form>
