@@ -21,7 +21,14 @@ namespace TechJobs.Controllers
         // [HttpPost]
         public IActionResult Index(int id)
         {
+            var x = jobData.Jobs.ToArray();
+            if (id > x.Length || id < 1)
+            {
+                TempData["Invalid"] = "Invalid Id";
+                return Redirect("/Search/ById");
+            }
             // TODO #1 - get the Job with the given ID and pass it into the view
+
             Job entry = jobData.Find(id);
             return View("Views/Job/Index.cshtml",entry);
          

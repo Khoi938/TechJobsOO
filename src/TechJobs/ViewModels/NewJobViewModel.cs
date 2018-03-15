@@ -7,8 +7,8 @@ using TechJobs.Models;
 namespace TechJobs.ViewModels
 {
     public class NewJobViewModel
-    {
-        [Required]
+    {   //STyle in CSS
+        [Required(ErrorMessage ="Please Enter the name.")]
         public string Name { get; set; }
         //public string Location { get; set; }
 
