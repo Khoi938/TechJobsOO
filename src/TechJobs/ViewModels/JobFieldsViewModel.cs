@@ -11,7 +11,7 @@ namespace TechJobs.ViewModels
 
         // All fields in the given column
         public IEnumerable<JobField> Fields { get; set; }
-
+        /*
         public JobFieldsViewModel()
         {
             // Populate the list of all columns
@@ -24,6 +24,6 @@ namespace TechJobs.ViewModels
             }
 
 
-        }
+        }*/
     }
 }

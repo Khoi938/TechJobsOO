@@ -46,6 +46,15 @@ namespace TechJobs.Controllers
             
             if (ModelState.IsValid)
             {
+                Job newJob = new Job
+                {
+                    Name = newJobViewModel.Name,
+                    Employer = jobData.Employers.Find(newJobViewModel.EmployerID),
+                    Location = jobData.Locations.Find(newJobViewModel.City),
+                    CoreCompetency = jobData.CoreCompetencies.Find(newJobViewModel.Skill),
+                    PositionType = jobData.PositionTypes.Find(newJobViewModel.Position)
+                };
+                /*
                 Employer newEmp  = new Employer();
                 List<Employer> emp = jobData.Employers.ToList();
                 foreach (Employer x in emp)
@@ -90,7 +99,7 @@ namespace TechJobs.Controllers
                     Employer = newEmp,
                     Location = newLoca,
                     PositionType = newPo,
-                };
+                }; */
                 jobData.Jobs.Add(newJob);
                 
                 return Redirect("/Job?Id="+newJob.ID);
